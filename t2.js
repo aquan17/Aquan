@@ -19,16 +19,35 @@ function fadeIn() {
         }(i);
     }
 }
+function playMusic() {
+    
+
+    var sound = new Howl({
+        src: ['ssstik.io_1712586792929.mp3'], // Thay urls thành src
+        loop: true
+    });
+    sound.play(); // Phát âm nhạc
+
+    // Bắt sự kiện khi âm nhạc kết thúc
+    sound.on('end', function() {
+        // Lặp lại hiệu ứng chữ và âm nhạc khi âm nhạc kết thúc
+        setTimeout(function() {
+            fadeIn(); // Hiển thị chữ lại
+
+        }, 2700); // Thời gian độ trễ (ở đây là 1 giây)
+    });
+}
 
 document.querySelector(".content").onclick = () => {
     document.querySelector("#heart").hidden = false;
     document.querySelector("body").style.backgroundColor = "#542246";
     setTimeout(function() {
         fadeIn(); // Hiển thị chữ sau độ trễ
-    }, 2800); // Thời gian độ trễ tính bằng mili-giây (ở đây là 1 giây)
+    }, 2700); // Thời gian độ trễ tính bằng mili-giây (ở đây là 1 giây)
     var sound = new Howl({
         src: ['ssstik.io_1712586792929.mp3'], // Thay urls thành src
         loop: true
     });
     sound.play(); // Phát âm nhạc
+    playMusic(); // Bắt đầu hiệu ứng chữ và âm nhạc khi click
 };
